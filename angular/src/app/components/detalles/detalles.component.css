@@ -1,0 +1,144 @@
+/* IMPORTAR FUENTES */
+
+@font-face {
+    font-family: finger;
+    src: url(../../../assets/css/fonts/finger.ttf);
+}
+
+@font-face {
+    font-family: titilium;
+    src: url(../../../assets/css/fonts/titilium.ttf);
+}
+
+@font-face {
+    font-family: yanone;
+    src: url(../../../assets/css/fonts/yanone.ttf);
+}
+
+
+
+
+
+/* GENERAL */
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: yanone;
+}
+
+#container {
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+    padding-top: 80px;
+}
+
+
+
+
+
+/* ESTILOS DETALLES */
+
+body {
+    background: linear-gradient(rgba(5, 5, 5, .8), rgba(5, 5, 5, .8)),
+        url(../../../assets/css/img/fondo-cine-home.jpg);
+    background-size: cover;
+}
+
+#detalles-pelicula {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: 0 auto;
+    justify-content: center;
+    margin-top: 100px;
+    padding: 15px;
+}
+
+.detalles-pelicula {
+    max-width: 700px;
+    flex-basis: 400px;
+    height: 450px;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.detalles-pelicula #imagenes-pelicula {
+    border-radius: 7px;
+    user-select: none;
+}
+
+.detalles-pelicula .imagen-pelicula {
+    width: 300px;
+    height: 450px;
+    transition: all .3s;
+    border-radius: 7px;
+    user-select: none;
+}
+
+.detalles-pelicula .imagen-pelicula:hover {
+    filter: blur(2px) brightness(.3);
+    transition: filter .3s;
+    transform: perspective(1000px) rotateX(5deg);
+    transition: all .3s;
+}
+
+.detalles-pelicula .imagen-pelicula:hover~.imagen-png,
+.detalles-pelicula .imagen-png:hover {
+    opacity: 1;
+    transition: all .5s;
+    top: 280px;
+}
+
+
+.detalles-pelicula .imagen-png {
+    max-width: 290px;
+    height: 350px;
+    position: absolute;
+    top: 300px;
+    transition: all .5s;
+    pointer-events: none;
+    opacity: 0;
+}
+
+#info-pelicula {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    height: 100%;
+}
+
+#info-pelicula h2 {
+    font-size: 80px;
+    margin-bottom: 50px;
+    margin-top: 30px;
+    max-width: 100%;
+    text-align: center;
+}
+
+#info-pelicula p {
+    font-size: 20px;
+    margin: 10px auto;
+}
+
+#info-pelicula p:last-child {
+    text-align: center;
+}
+
+#video {
+    width: 100%;
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+    padding: 50px 0;
+}
+
+#video video {
+    width: 80%;
+    border: 2px solid #555;
+}

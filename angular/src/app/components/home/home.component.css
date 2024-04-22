@@ -1,0 +1,155 @@
+/* IMPORTAR FUENTES */
+
+@font-face {
+    font-family: finger;
+    src: url(../../../assets/css/fonts/finger.ttf);
+}
+
+@font-face {
+    font-family: titilium;
+    src: url(../../../assets/css/fonts/titilium.ttf);
+}
+
+@font-face {
+    font-family: yanone;
+    src: url(../../../assets/css/fonts/yanone.ttf);
+}
+
+
+
+
+
+/* GENERAL */
+
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: yanone;
+    letter-spacing: 1px;
+}
+
+#container {
+    width: 90%;
+    height: 100%;
+    margin: 150px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+
+
+/* ESTILOS HOME */
+
+body {
+    min-height: 100vh;
+    padding: 1px;
+    background: linear-gradient(rgba(5, 5, 5, .8), rgba(5, 5, 5, .8)),
+        url(../../../assets/css/img/fondo-cine-home.jpg);
+    background-size: cover;
+}
+
+#container h1 {
+    color: #fff;
+    font-size: 90px;
+    font-family: yanone;
+    margin: 0px auto 50px auto;
+    text-align: center;
+}
+
+
+
+
+
+/* ESTILOS FILTROS */
+
+#lista-categorias {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#lista-categorias a {
+    width: 115px;
+    max-width: 115px;
+    text-align: center;
+    padding: 12px 0px;
+    margin: 5px 20px;
+    background-color: transparent;
+    text-decoration: none;
+    color: #fff;
+    border: 2px solid #555;
+    border-radius: 4px;
+}
+
+.categoria-seleccionada {
+    background: rgba(238, 238, 238, 0.201) !important;
+}
+
+
+
+
+
+/* ESTILOS PELICULAS */
+
+.listado-peliculas {
+    width: 90%;
+    height: 100%;
+    margin: 50px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+}
+
+.listado-peliculas .peliculas {
+    margin: 50px 20px;
+    flex-basis: 250px;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 7px;
+    margin: 1px;
+    user-select: none;
+}
+
+.listado-peliculas .peliculas img {
+    width: 250px;
+    height: 400px;
+    transition: transform .4s;
+}
+
+.listado-peliculas .peliculas img:hover~.contenido,
+.listado-peliculas .peliculas .contenido:hover {
+    opacity: 1;
+    transition: all .4s;
+}
+
+.listado-peliculas .peliculas .contenido {
+    pointer-events: none;
+    opacity: 0;
+    color: #fff;
+    font-size: 25px;
+    font-family: yanone;
+    font-weight: bold;
+    letter-spacing: 2px;
+    transform: translateY(-270px);
+    text-align: center;
+    transition: all .5s;
+}
+
+.listado-peliculas .peliculas img:hover {
+    filter: blur(2px) brightness(.3);
+    transition: filter .3s;
+    transform: perspective(1000px) rotateX(5deg);
+    transition: all .3s;
+}
+
+.listado-peliculas .peliculas .contenido p {
+    margin: 8px auto;
+}

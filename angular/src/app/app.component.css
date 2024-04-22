@@ -1,0 +1,132 @@
+/* IMPORTAR FUENTES */
+
+@font-face {
+    font-family: finger;
+    src: url(../assets/css/fonts/finger.ttf);
+}
+
+@font-face {
+    font-family: titilium;
+    src: url(../assets/css/fonts/titilium.ttf);
+}
+
+@font-face {
+    font-family: yanone;
+    src: url(../assets/css/fonts/yanone.ttf);
+}
+
+
+
+
+
+/* GENERAL */
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+#container {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    margin: 0 auto;
+}
+
+
+
+
+
+/* ESTILOS HEADER */
+
+#header {
+    background: #000000d2;
+    width: 100%;
+    height: 80px;
+    margin: 0px;
+    font-size: 23px;
+    position: fixed;
+    border-bottom: 1px solid #555;
+    z-index: 100;
+}
+
+#logo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0 50px;
+    font-size: 40px;
+    font-family: finger;
+    color: #fff;
+    text-decoration: none;
+    transition: all .3s;
+    user-select: none;
+}
+
+#logo img {
+    width: 50px;
+}
+
+#logo:hover {
+    transform: scale(1.1);
+}
+
+
+
+
+
+/* ESTILOS FOOTER */
+
+#footer {
+    background: #000;
+    width: 100%;
+    font-size: 23px;
+    border-top: 1px solid #555;
+    font-family: yanone
+}
+
+#container-footer {
+    width: 90%;
+}
+
+
+#footer p {
+    color: #ccc;
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 1px;
+    padding: 10px;
+}
+
+#footer p a {
+    color: #fff;
+}
+
+
+
+
+
+/* MEDIA QUERIES */
+
+@media (max-width:679px) {
+
+    #logo {
+        margin: 0 10px;
+    }
+
+    #menu-hamburguesa {
+        display: flex;
+    }
+
+    #nav {
+        display: none;
+    }
+}
+
+@media (min-width:679px) {
+    #nav-mobile {
+        display: none !important;
+    }
+}

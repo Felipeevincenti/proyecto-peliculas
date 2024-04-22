@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+
+<body>
+
+    <div id="container">
+
+        <h1>PELICULAS</h1>
+
+        <div id="lista-categorias">
+            <a [routerLink]="['/home']" class="categoria-pelicula" (click)="obtenerGenero('todos')"
+                [ngClass]="{'categoria-seleccionada' : todos == true}">Todos</a>
+            <a [routerLink]="['/home']" class="categoria-pelicula" (click)="obtenerGenero('comedia')"
+                [ngClass]="{'categoria-seleccionada' : comedia == true}">Comedia</a>
+            <a [routerLink]="['/home']" class="categoria-pelicula" (click)="obtenerGenero('aventura')"
+                [ngClass]="{'categoria-seleccionada' : aventura == true}">Aventura</a>
+            <a [routerLink]="['/home']" class="categoria-pelicula" (click)="obtenerGenero('accion')"
+                [ngClass]="{'categoria-seleccionada' : accion == true}">Acción</a>
+            <a [routerLink]="['/home']" class="categoria-pelicula" (click)="obtenerGenero('animacion')"
+                [ngClass]="{'categoria-seleccionada' : animacion == true}">Animación</a>
+            <a [routerLink]="['/home']" class="categoria-pelicula" (click)="obtenerGenero('terror')"
+                [ngClass]="{'categoria-seleccionada' : terror == true}">Terror</a>
+        </div>
+
+        <div class="listado-peliculas" *ngIf="todos == true">
+
+            <div class="peliculas" *ngFor="let pelicula of peliculas" [routerLink]="['/detalles/' + pelicula._id]">
+
+                <img src="{{url + 'obtener-imagen/' + pelicula.image}}" alt="">
+
+                <div class="contenido">
+                    <p>{{pelicula.name}}</p>
+                    <p>{{pelicula.age}}</p>
+                    <p>{{pelicula.duration}} minutos</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="listado-peliculas" *ngIf="todos == false">
+
+            <div class="peliculas" *ngFor="let categoria of tomarCategoria"
+                [routerLink]="['/detalles/' + categoria._id]">
+
+                <img src="{{url + 'obtener-imagen/' + categoria.image}}" alt="">
+
+                <div class="contenido">
+                    <p>{{categoria.name}}</p>
+                    <p>{{categoria.age}}</p>
+                    <p>{{categoria.duration}} minutos</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

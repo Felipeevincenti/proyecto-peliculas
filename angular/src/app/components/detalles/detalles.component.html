@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+</head>
+
+<body>
+
+    <div id="container">
+
+        <div id="detalles-pelicula">
+
+            <div id="imagenes-pelicula" class="detalles-pelicula">
+                <img class="imagen-pelicula" src="{{url + 'obtener-imagen/' + pelicula.image}}">
+                <img class="imagen-png" src="{{url + 'obtener-png/' + pelicula.png}}" alt="">
+            </div>
+
+            <div id="info-pelicula" class="detalles-pelicula">
+
+                <h2>{{pelicula.name}}</h2>
+                <p>Lanzamiento: {{pelicula.age}}</p>
+                <p>Duracion: {{pelicula.duration}} minutos</p>
+                <p>Género: {{pelicula.genre}}</p>
+                <p>Descripcion: {{pelicula.description}}</p>
+
+            </div>
+
+        </div>
+
+        <div id="video">
+            <video src="{{url + 'obtener-video/' + pelicula.video}}" width="1000px" controls></video>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
