@@ -1,8 +1,6 @@
-
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from "rxjs";
-import { PeliculaModel } from "../models/pelicula.model";
 import { Global } from "./global.service";
 
 @Injectable()

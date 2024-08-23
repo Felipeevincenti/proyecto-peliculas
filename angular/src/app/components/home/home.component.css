@@ -68,14 +68,23 @@ body {
 
 /* ESTILOS FILTROS */
 
-#lista-categorias {
+.genero {
+    cursor: pointer;
+}
+
+.generoSeleccionado {
+    background: rgba(238, 238, 238, 0.201) !important;
+    border: transparent !important;
+}
+
+#lista-generos {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 }
 
-#lista-categorias a {
+#lista-generos a {
     width: 115px;
     max-width: 115px;
     text-align: center;
@@ -84,12 +93,8 @@ body {
     background-color: transparent;
     text-decoration: none;
     color: #fff;
-    border: 2px solid #555;
+    border: 1px solid #ffffff;
     border-radius: 4px;
-}
-
-.categoria-seleccionada {
-    background: rgba(238, 238, 238, 0.201) !important;
 }
 
 
@@ -116,6 +121,7 @@ body {
     border-radius: 7px;
     margin: 1px;
     user-select: none;
+    cursor: pointer;
 }
 
 .listado-peliculas .peliculas img {

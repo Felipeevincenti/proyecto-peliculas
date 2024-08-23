@@ -13,22 +13,18 @@
 
         <h1>PELICULAS</h1>
 
-        <div id="lista-categorias">
-            <a [routerLink]="['/home']" class="categoria-pelicula" (click)="obtenerGenero('todos')"
-                [ngClass]="{'categoria-seleccionada' : todos == true}">Todos</a>
-            <a [routerLink]="['/home']" class="categoria-pelicula" (click)="obtenerGenero('comedia')"
-                [ngClass]="{'categoria-seleccionada' : comedia == true}">Comedia</a>
-            <a [routerLink]="['/home']" class="categoria-pelicula" (click)="obtenerGenero('aventura')"
-                [ngClass]="{'categoria-seleccionada' : aventura == true}">Aventura</a>
-            <a [routerLink]="['/home']" class="categoria-pelicula" (click)="obtenerGenero('accion')"
-                [ngClass]="{'categoria-seleccionada' : accion == true}">Acción</a>
-            <a [routerLink]="['/home']" class="categoria-pelicula" (click)="obtenerGenero('animacion')"
-                [ngClass]="{'categoria-seleccionada' : animacion == true}">Animación</a>
-            <a [routerLink]="['/home']" class="categoria-pelicula" (click)="obtenerGenero('terror')"
-                [ngClass]="{'categoria-seleccionada' : terror == true}">Terror</a>
+        <div id="lista-generos">
+            <a class="genero" (click)="listarPeliculas('Todas')"
+                [ngClass]="{'generoSeleccionado': generoSeleccionado === 'Todas'}">Todas</a>
+            <ng-container *ngFor="let genero of generos">
+                <a class="genero" (click)="listarPeliculas(genero)"
+                    [ngClass]="{'generoSeleccionado': genero === generoSeleccionado}">{{genero}}</a>
+            </ng-container>
+
+
         </div>
 
-        <div class="listado-peliculas" *ngIf="todos == true">
+        <div class="listado-peliculas">
 
             <div class="peliculas" *ngFor="let pelicula of peliculas" [routerLink]="['/detalles/' + pelicula._id]">
 
@@ -38,23 +34,6 @@
                     <p>{{pelicula.name}}</p>
                     <p>{{pelicula.age}}</p>
                     <p>{{pelicula.duration}} minutos</p>
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="listado-peliculas" *ngIf="todos == false">
-
-            <div class="peliculas" *ngFor="let categoria of tomarCategoria"
-                [routerLink]="['/detalles/' + categoria._id]">
-
-                <img src="{{url + 'obtener-imagen/' + categoria.image}}" alt="">
-
-                <div class="contenido">
-                    <p>{{categoria.name}}</p>
-                    <p>{{categoria.age}}</p>
-                    <p>{{categoria.duration}} minutos</p>
                 </div>
 
             </div>

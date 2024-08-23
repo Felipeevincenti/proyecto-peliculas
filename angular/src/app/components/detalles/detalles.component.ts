@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PeliculasService } from 'src/app/services/peliculas.service';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Global } from 'src/app/services/global.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { Global } from 'src/app/services/global.service';
 
 export class DetallesComponent implements OnInit {
 
-  public pelicula: any
+  public pelicula: any = {};
   public url: string
 
   ngOnInit(): void {
@@ -25,18 +25,18 @@ export class DetallesComponent implements OnInit {
 
   constructor(
     private _peliculasService: PeliculasService,
-    private _route: ActivatedRoute,
-    private _router: Router
+    private _route: ActivatedRoute
   ) {
     this.url = Global.url
   }
 
   detallesPelicula(id: string) {
     this._peliculasService.detallesPelicula(id).subscribe(
-      response => {
-        this.pelicula = response.pelicula
-      }, error => {
-        console.log(error);
+      res => {
+        this.pelicula = res.pelicula
+      },
+      err => {
+        console.log(err);
       }
     )
   }

@@ -2,6 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Global } from 'src/app/services/global.service';
 import { PeliculasService } from 'src/app/services/peliculas.service';
 
+interface Pelicula {
+  age: string;
+  title: string;
+  genre: string;
+  duration: string;
+  description: string;
+}
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,156 +19,65 @@ import { PeliculasService } from 'src/app/services/peliculas.service';
 
 export class HomeComponent implements OnInit {
 
-  public peliculas: Array<any> = [];
   public url: string;
-  public tomarCategoria: Array<any> = [];
-
-  public todos: boolean;
-  public comedia: boolean
-  public aventura: boolean
-  public accion: boolean
-  public animacion: boolean
-  public terror: boolean
+  public peliculas: Array<any> = [];
+  public generos: Set<string> = new Set();
+  public generoElegido: Array<any> = [];
+  public generoSeleccionado: string = '';
 
   constructor(
-    private _peliculasService: PeliculasService
+    private peliculasService: PeliculasService
   ) {
     this.url = Global.url;
+  }
 
-    this.todos = true;
-    this.comedia = false;
-    this.aventura = false;
-    this.accion = false;
-    this.animacion = false;
-    this.terror = false
-  };
+  public ngOnInit(): void {
+    const genero = localStorage.getItem('generoSeleccionado') || 'Todas';
 
-  ngOnInit(): void {
-    this.obtenerPeliculas();
-    window.scrollTo(0, 0);
-  };
+    const storedGeneros = sessionStorage.getItem('generos');
 
-  obtenerPeliculas() {
-    this._peliculasService.obtenerPeliculas().subscribe(
-      response => {
-        if (response.listado) {
-          this.peliculas = response.listado;
-        };
+    if (storedGeneros) {
+      this.generos = new Set(JSON.parse(storedGeneros));
+    }
+
+    this.listarPeliculas(genero);
+  }
+
+  public listarPeliculas(generoParam: any): void {
+    localStorage.setItem('generoSeleccionado', generoParam);
+    this.peliculas = [];
+
+    this.peliculasService.obtenerPeliculas().subscribe(
+      res => {
+        if (generoParam === 'Todas') {
+          this.peliculas = res.listado || [];
+          this.generoSeleccionado = 'Todas';
+          this.obtenerGeneros();
+        } else {
+          this.generoSeleccionado = generoParam;
+          this.peliculas = res.listado.filter((pelicula: Pelicula) =>
+            pelicula.genre.includes(generoParam)
+          );
+        }
       },
-      error => {
-        console.log(error);
+      err => {
+        console.error('Error al obtener las películas:', err);
       }
     );
-  };
-
-  obtenerGenero(genero: string) {
-
-    if (genero == "todos") {
-      this.desmarcar();
-      this.todos = true;
-    }
-
-    else if (genero == "comedia") {
-      if (this.comedia == true) {
-        this.comedia = false;
-        this.todos = true;
-        this.tomarCategoria = [];
-      } else {
-        this.desmarcar();
-        this.comedia = true;
-        this.todos = false;
-        this.tomarCategoria = [];
-
-        for (let pelicula in this.peliculas) {
-          if (this.peliculas[pelicula].genre.includes('Comedia')) {
-            this.tomarCategoria.push(this.peliculas[pelicula]);
-          }
-        }
-      }
-    }
-
-    else if (genero == "aventura") {
-      if (this.aventura == true) {
-        this.aventura = false;
-        this.todos = true;
-        this.tomarCategoria = [];
-      } else {
-        this.desmarcar();
-        this.aventura = true;
-        this.todos = false;
-        this.tomarCategoria = [];
-
-        for (let pelicula in this.peliculas) {
-          if (this.peliculas[pelicula].genre.includes('Aventura')) {
-            this.tomarCategoria.push(this.peliculas[pelicula]);
-          }
-        }
-      }
-    }
-
-    else if (genero == "accion") {
-      if (this.accion == true) {
-        this.accion = false;
-        this.todos = true;
-        this.tomarCategoria = [];
-      } else {
-        this.desmarcar();
-        this.accion = true;
-        this.todos = false;
-        this.tomarCategoria = [];
-
-        for (let pelicula in this.peliculas) {
-          if (this.peliculas[pelicula].genre.includes('Acción')) {
-            this.tomarCategoria.push(this.peliculas[pelicula]);
-          }
-        }
-      }
-    }
-
-    else if (genero == "animacion") {
-      if (this.animacion == true) {
-        this.animacion = false;
-        this.todos = true;
-        this.tomarCategoria = [];
-      } else {
-        this.desmarcar();
-        this.animacion = true;
-        this.todos = false;
-        this.tomarCategoria = [];
-
-        for (let pelicula in this.peliculas) {
-          if (this.peliculas[pelicula].genre.includes('Animación')) {
-            this.tomarCategoria.push(this.peliculas[pelicula]);
-          }
-        }
-      }
-    }
-
-    else if (genero == "terror") {
-      if (this.terror == true) {
-        this.terror = false;
-        this.todos = true;
-        this.tomarCategoria = [];
-      } else {
-        this.desmarcar();
-        this.terror = true;
-        this.todos = false;
-        this.tomarCategoria = [];
-
-        for (let pelicula in this.peliculas) {
-          if (this.peliculas[pelicula].genre.includes('Terror')) {
-            this.tomarCategoria.push(this.peliculas[pelicula]);
-          }
-        }
-      }
-    }
   }
 
-  desmarcar() {
-    this.comedia = false
-    this.aventura = false
-    this.accion = false
-    this.animacion = false
-    this.terror = false
+  public obtenerGeneros(): void {
+    this.generos.clear();
+    if (this.peliculas.length > 0) {
+      this.peliculas.forEach((pelicula: Pelicula) => {
+        if (pelicula.genre) {
+          const generosPorPeli = pelicula.genre.split(' - ').map(g => g.trim());
+          generosPorPeli.forEach(genero => this.generos.add(genero));
+        }
+      });
+      sessionStorage.setItem('generos', JSON.stringify(Array.from(this.generos)));
+    }
+
   }
-}
+
+};
