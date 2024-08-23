@@ -31,7 +31,6 @@ coverage/
 .angular/cache/
 
 # Compiled output
-*.js
 *.js.map
 
 # Angular testing
