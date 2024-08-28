@@ -59,3 +59,6 @@ Aquí están las rutas disponibles para interactuar con la aplicación:
 <img src="https://github.com/user-attachments/assets/75cb5602-4291-4736-82c5-12f50ebdcb6a">
 <hr>
 <img src="https://github.com/user-attachments/assets/afc9ded8-bf91-4d89-9678-0a0a825c433f">
+
+
+
