@@ -1,6 +1,24 @@
 # Proyecto de Gestión de Películas
 
-Este es un proyecto para gestionar una base de datos de películas, permitiendo a los usuarios agregar, editar, eliminar y visualizar películas.
+Este es un proyecto para gestionar una base de datos de películas, permitiendo a los usuarios agregar, editar, eliminar y visualizar películas. La aplicación está diseñada para ser **responsive**, adaptándose a diferentes tamaños de pantalla para una experiencia de usuario óptima en dispositivos móviles y de escritorio.
+
+<div id="user-content-toc"> 
+  <ul align="center">
+    <summary><h2 style="display: inline-block">Tecnologías ⚙</h2></summary> 
+  </ul> 
+</div> 
+
+<!--tech stack icons--> 
+<p align="center"> 
+  <a href="https://skillicons.dev"> 
+    <img src="https://skillicons.dev/icons?i=html,css,ts,angular,nodejs,mongodb" /> 
+  </a> 
+</p> 
+<p align="center"> 
+  <small> HTML5, CSS3: Diseño y maquetación web.<br>TypeScript: Programación y lógica de la aplicación.<br> Angular: Framework principal para el desarrollo del frontend.<br> Node.js: Entorno de ejecución para el servidor.<br> MongoDB: Base de datos NoSQL para almacenar la información de las películas. </small> 
+</p>
+
+<br>
 
 ## Características
 
