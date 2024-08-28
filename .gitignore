@@ -54,4 +54,3 @@ src/environments/environment*.ts
 
 # MongoDB dumps (si haces dumps de la base de datos)
 /dump/
-*.json
