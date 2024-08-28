@@ -40,8 +40,8 @@ Aquí están las rutas disponibles para interactuar con la aplicación:
 - **Subir Imagen (Portada)**: `POST /subir-imagen/:id`  
   Sube una imagen para usar como portada de la película. La imagen debe ser enviada con el nombre `image`. Reemplaza `:id` con el identificador de la película.
 
-- **Subir PNG para Efecto Visual**: `POST /subir-png/:id`  
-  Sube un archivo PNG que se usará para el efecto visual al pasar el mouse sobre la portada. La imagen PNG debe ser enviada con el nombre `png`. Reemplaza `:id` con el identificador de la película.
+- **Subir Png**: `POST /subir-png/:id`  
+  Sube un archivo PNG que se usará para el efecto visual al pasar el mouse sobre la portada. La imagen png debe ser enviada con el nombre `png`. Reemplaza `:id` con el identificador de la película.
 
 - **Subir Video**: `POST /subir-video/:id`  
   Sube un video que será el contenido principal de la película. El video debe ser enviado con el nombre `video`. Reemplaza `:id` con el identificador de la película.
